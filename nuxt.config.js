@@ -14,6 +14,7 @@ export default {
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
+    '~/assets/css/main.css'
   ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
@@ -32,8 +33,14 @@ export default {
     // https://go.nuxtjs.dev/bootstrap
     'bootstrap-vue/nuxt',
   ],
+  bootstrapVue: {
+    icons: true
+  },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
+  },
+  router: {
+    linkExactActiveClass: 'text-primary' // tailwind class with custom color
   }
 }
