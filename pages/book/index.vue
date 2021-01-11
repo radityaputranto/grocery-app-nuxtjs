@@ -25,7 +25,7 @@
 
         <b-col lg="10" md="8" class="my-1">
             <b-row class="justify-content-end">
-                <b-col md="5">
+                <b-col md="5" class="align-right">
                     <b-form-group
                     label="Filter"
                     label-for="filter-input"
