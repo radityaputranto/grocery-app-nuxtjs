@@ -83,7 +83,7 @@ export default {
               position: "top-right",
               duration: 3000,
             });
-            this.$router.push({path:"/checkout"});
+            this.$router.push({path:"/cart"});
           })
           .catch((err) => console.log(err));
       } else {

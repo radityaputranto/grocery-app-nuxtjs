@@ -17,7 +17,7 @@
         </b-navbar-nav>
 
         <b-navbar-nav class="ml-auto">
-          <b-nav-item href="#" to="/checkout">
+          <b-nav-item href="#" to="/cart">
             Sewa Buku
             <!-- <b-icon-book></b-icon-book> -->
             <b-badge variant="primary">{{ orders.length }}</b-badge>
