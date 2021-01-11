@@ -13,7 +13,7 @@
       >
         <b-card-text> Some quick example text to. </b-card-text>
 
-        <b-button href="#" variant="primary">Go somewhere</b-button>
+        <b-button :to="'book/'+product.id" variant="primary">Detail product</b-button>
       </b-card>
     </div>
   </div>
