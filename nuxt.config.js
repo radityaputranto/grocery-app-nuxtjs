@@ -32,6 +32,8 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/bootstrap
     'bootstrap-vue/nuxt',
+    '@nuxtjs/toast'
+    
   ],
   bootstrapVue: {
     icons: true
@@ -42,5 +44,18 @@ export default {
   },
   router: {
     linkExactActiveClass: 'text-primary' // tailwind class with custom color
-  }
+  },
+  toast: {
+    position: 'top-right',
+    register: [ // Register custom toasts
+      {
+        name: 'my-error',
+        message: 'Oops...Something went wrong',
+        options: {
+          type: 'error'
+        }
+      }
+    ]
+}
+
 }

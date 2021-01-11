@@ -40,7 +40,7 @@ export default {
       .get("http://localhost:8001/best-products")
       .then((response)=>this.setProdct(response.data)
       )
-      .catch(function (error) {
+      .catch((error)=> {
         // handle error
         console.log(error);
       });
