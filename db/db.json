@@ -99,21 +99,7 @@
       "gambar": "lontong-opor-ayam.jpg"
     }
   ],
-  "keranjangs": [
-    {
-      "quantity": "1",
-      "note": "fdfsdf",
-      "products": {
-        "id": 1,
-        "kode": "K-01",
-        "nama": "Sate Ayam",
-        "harga": 16000,
-        "is_ready": true,
-        "gambar": "sate-ayam.jpg"
-      },
-      "id": 1
-    }
-  ],
+  "keranjangs": [],
   "pesanans": [
     {
       "nama": "Afif",
@@ -146,6 +132,16 @@
         }
       ],
       "id": 1
+    },
+    {
+      "nama": "wfdfsf",
+      "noMeja": "23",
+      "id": 2
+    },
+    {
+      "nama": "dfsdf",
+      "noMeja": "234",
+      "id": 3
     }
   ]
 }

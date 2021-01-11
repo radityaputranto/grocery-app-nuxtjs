@@ -60,6 +60,30 @@
         </div>
       </div>
     </div>
+
+    <!-- Form Checkout -->
+    <div class="row justify-content-end" v-if="charts.length >= 1">
+      <div class="col-md-4">
+        <form class="mt-4" v-on:submit.prevent>
+          <div class="form-group">
+            <label for="nama">Nama :</label>
+            <input type="text" class="form-control" v-model="pesan.nama" />
+          </div>
+          <div class="form-group">
+            <label for="noMeja">Nomor Meja :</label>
+            <input type="text" class="form-control" v-model="pesan.noMeja" />
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn-success float-right"
+            @click="checkout"
+          >
+            <b-icon-cart></b-icon-cart>Pesan
+          </button>
+        </form>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -68,6 +92,7 @@ export default {
   data() {
     return {
       charts: [],
+      pesan: {},
       link: [
         {
           text: "Home",
@@ -103,17 +128,45 @@ export default {
           console.log(error);
         });
     },
-    getData(){
+    getData() {
       axios
-      .get("http://localhost:8001/keranjangs")
-      .then((response) => {
-        console.log(response.data.length);
-        this.setChart(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    }
+        .get("http://localhost:8001/keranjangs")
+        .then((response) => {
+          console.log(response.data.length);
+          this.setChart(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    checkout() {
+      if (this.pesan.nama && this.pesan.noMeja) {
+        this.pesan.keranjangs = this.keranjangs;
+        axios
+          .post("http://localhost:8001/pesanans", this.pesan)
+          .then(() => {
+            // Hapus Semua Keranjang
+            this.charts.map(function (item) {
+              return axios
+                .delete("http://localhost:8001/keranjangs/" + item.id)
+                .catch((error) => console.log(error));
+            });
+            this.$router.push({ path: "/success" });
+            this.$toasted.success("Order Successfully", {
+              theme: "toasted-primary",
+              position: "top-right",
+              duration: 3000,
+            });
+          })
+          .catch((err) => console.log(err));
+      } else {
+        this.$toasted.error("Name and table number are required", {
+              theme: "toasted-primary",
+              position: "top-right",
+              duration: 3000,
+            });
+      }
+    },
   },
   mounted() {
     this.getData();
