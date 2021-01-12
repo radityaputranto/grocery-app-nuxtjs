@@ -76,4 +76,5 @@ body{
 .best-seller {
     display: flex;
     margin-left: auto;
+    margin-bottom: -14px;
   }
