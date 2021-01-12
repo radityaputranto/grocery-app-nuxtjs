@@ -1,87 +1,94 @@
 <template>
   <div>
-    <Breadcumb :link="link" />
-    <h1>Cart</h1>
-    <div class="row">
-      <div class="col-12">
-        <div class="table-responsive">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Note</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Price</th>
-                <th scope="col">Total Price</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody v-if="charts.length >= 1">
-              <tr v-for="(item, index) in charts" :key="charts.id">
-                <td>{{ index + 1 }}</td>
-                <td>{{ item.products.nama }}</td>
-                <td>{{ item.note }}</td>
-                <td>{{ item.quantity }}</td>
-                <td>
-                  <span class="small text-muted">IDR</span>
-                  {{ item.products.harga }}
-                </td>
-                <td>
-                  <span class="small text-muted">IDR</span>
-                  {{ item.products.harga * item.quantity }}
-                </td>
-                <td>
-                  <b-icon-trash
-                    class="text-danger"
-                    @click="deleteOrder(item.id)"
-                  ></b-icon-trash>
-                </td>
-              </tr>
+    <Breadcumb :link="link" :title="title" />
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12">
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Note</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Total Price</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody v-if="charts.length >= 1">
+                  <tr v-for="(item, index) in charts" :key="charts.id">
+                    <td>{{ index + 1 }}</td>
+                    <td>{{ item.products.nama }}</td>
+                    <td>{{ item.note }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>
+                      <span class="small text-muted">IDR</span>
+                      {{ item.products.harga }}
+                    </td>
+                    <td>
+                      <span class="small text-muted">IDR</span>
+                      {{ item.products.harga * item.quantity }}
+                    </td>
+                    <td>
+                      <b-icon-trash
+                        class="text-danger"
+                        @click="deleteOrder(item.id)"
+                      ></b-icon-trash>
+                    </td>
+                  </tr>
 
-              <tr>
-                <td colspan="5" align="right" class="font-weight-bold">
-                  Total :
-                </td>
-                <td class="font-weight-bold">
-                  <span class="small text-muted">IDR</span> {{ totalPrice }}
-                </td>
-                <td></td>
-              </tr>
-            </tbody>
-            <tbody v-else>
-              <tr>
-                <td colspan="7" align="center">
-                  <h6 class="text-center">No Data Available</h6>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                  <tr>
+                    <td colspan="5" align="right" class="font-weight-bold">
+                      Total :
+                    </td>
+                    <td class="font-weight-bold">
+                      <span class="small text-muted">IDR</span> {{ totalPrice }}
+                    </td>
+                    <td></td>
+                  </tr>
+                </tbody>
+                <tbody v-else>
+                  <tr>
+                    <td colspan="7" align="center">
+                      <h6 class="text-center">No Data Available</h6>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
 
-    <!-- Form Checkout -->
-    <div class="row justify-content-end" v-if="charts.length >= 1">
-      <div class="col-md-4">
-        <form class="mt-4" v-on:submit.prevent>
-          <div class="form-group">
-            <label for="nama">Nama :</label>
-            <input type="text" class="form-control" v-model="pesan.nama" />
-          </div>
-          <div class="form-group">
-            <label for="noMeja">Nomor Meja :</label>
-            <input type="text" class="form-control" v-model="pesan.noMeja" />
-          </div>
+        <!-- Form Checkout -->
+        <div class="row justify-content-end" v-if="charts.length >= 1">
+          <div class="col-md-4">
+            <form class="mt-4" v-on:submit.prevent>
+              <div class="form-group">
+                <label for="nama">Nama :</label>
+                <input type="text" class="form-control" v-model="pesan.nama" />
+              </div>
+              <div class="form-group">
+                <label for="noMeja">Nomor Meja :</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  v-model="pesan.noMeja"
+                />
+              </div>
 
-          <button
-            type="submit"
-            class="btn btn-success float-right"
-            @click="checkout"
-          >
-            <b-icon-cart></b-icon-cart>Pesan
-          </button>
-        </form>
+              <button
+                type="submit"
+                class="btn btn-success float-right"
+                @click="checkout"
+              >
+                <b-icon-cart></b-icon-cart>Pesan
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -93,17 +100,14 @@ export default {
     return {
       charts: [],
       pesan: {},
+      title: "Cart",
       link: [
         {
           text: "Home",
           href: "/",
         },
         {
-          text: "Books",
-          href: "/book",
-        },
-        {
-          text: /* product.name */ "Cart",
+          text: "Cart",
           active: true,
         },
       ],
@@ -161,10 +165,10 @@ export default {
           .catch((err) => console.log(err));
       } else {
         this.$toasted.error("Name and table number are required", {
-              theme: "toasted-primary",
-              position: "top-right",
-              duration: 3000,
-            });
+          theme: "toasted-primary",
+          position: "top-right",
+          duration: 3000,
+        });
       }
     },
   },

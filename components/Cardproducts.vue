@@ -1,25 +1,33 @@
 <template>
   <div class="card">
-    <div>
-      <b-card
-        :title="product.nama"
-        img-src="https://picsum.photos/600/300/?image=25"
-        img-alt="Image"
-        img-top
-        tag="article"
-        style="max-width: 20rem"
-        class="mb-2"
-        border-variant="light"
-      >
-        <b-card-text> Some quick example text to. </b-card-text>
+    <b-badge variant="warning" class="best-seller" v-if="product.best_seller"
+      >Best Seller</b-badge
+    >
 
-        <b-button :to="'book/'+product.id" variant="primary">Detail product</b-button>
-      </b-card>
-    </div>
+    <!-- <img src="" alt="" v-if="priduct.picture" /> -->
+    <b-img
+      src="../assets/img/doodle-fruit.png"
+      fluid
+      alt="Responsive image"
+      class="grayscale"
+    />
+    <h5 class="text-center">{{ product.nama }}</h5>
+    <h5 class="font-weight-bold text-center">
+      <span class="small text-muted">IDR</span> {{ product.harga }}
+    </h5>
+    <b-button
+      class="borderless"
+      variant="outline-success"
+      :to="'product/' + product.id"
+      ><b-icon-plus-circle></b-icon-plus-circle> Add to cart
+    </b-button>
   </div>
 </template>
 <script>
 export default {
-  props: ['product']
-}
+  props: ["product"],
+};
 </script>
+
+<style scoped>
+</style>

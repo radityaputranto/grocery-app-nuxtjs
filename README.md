@@ -1,4 +1,4 @@
-# perpustakaan-nuxt-js
+# Grocery app with nuxtjs
 
 ## Build Setup
 
