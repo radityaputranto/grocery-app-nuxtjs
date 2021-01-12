@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
+
 body{
     background-color: #F1F1F1;
 }
@@ -22,7 +22,7 @@ body{
     left: -15px;
 }
 .dark-green-text{
-    color: #265B0B;
+    color: #265B0B !important;
 }
 .grey-text{
     color: #717171;
@@ -43,7 +43,7 @@ body{
     background-position-y: 40%;
     background-size: 45%;
     background-repeat: no-repeat;
-    background-image: url(/_nuxt/assets/img/vegy-jumbotron.png);
+    background-image: url("../img/vegy-jumbotron.png");
 }
 }
 .input-search{

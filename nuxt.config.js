@@ -8,7 +8,11 @@ export default {
       { hid: 'description', name: 'description', content: '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: 'assets/img/fav.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/fav.ico' },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap'
+      }
     ]
   },
 
