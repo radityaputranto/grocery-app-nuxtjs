@@ -28,7 +28,14 @@
       </div>
     </div>
     <div v-else>
-      <center><h6 class="text-muted mt-3 mb-3">No available data</h6></center>
+      <div class="justify-content-center empty-img">
+        <center><h6 class="text-muted mt-3 mb-3">No available data</h6></center>
+        <b-img
+          src="../../assets/img/undraw_Taken_re_yn20.svg"
+          fluid
+          alt="Responsive image"
+        ></b-img>
+      </div>
     </div>
   </b-container>
 </template> 
@@ -67,3 +74,10 @@ export default {
   },
 };
 </script>
+
+<style  scoped>
+.empty-img {
+  width: 25%;
+  margin: 0 auto;
+}
+</style>

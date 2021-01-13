@@ -6,6 +6,13 @@
         <div class="row">
           <div class="col-md-6">
             <b-img
+              :src="require(`~/assets/img/data/${product.gambar}`)"
+              fluid
+              alt="Responsive image"
+              v-if="product.gambar"
+            />
+            <b-img
+              v-else
               src="../../assets/img/doodle-fruit.png"
               fluid
               alt="Responsive image"
@@ -22,10 +29,14 @@
             <h3 class="grey-text">
               <strong>{{ product.nama }}</strong>
             </h3>
-            <h5>
-              Price : <span class="small text-muted">IDR</span>
-              {{ product.harga }}
-            </h5>
+            <h6>
+              Price :
+              <span class="h5"
+                ><span class="small text-muted">IDR</span> {{ product.harga }}
+              </span>
+              <small class="small text-gray-400">/{{ product.unit }}</small>
+            </h6>
+            <h6>Description :</h6>
             <small class="text-muted">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -35,11 +46,35 @@
             <form v-on:submit.prevent>
               <div class="form-group">
                 <label for="">Quantity</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  v-model="pesan.quantity"
-                />
+                <div class="input-group">
+                  <span class="input-group-btn">
+                    <button
+                      type="button"
+                      class="btn btn-default btn-number"
+                      v-on:click="decrementQty"
+                    >
+                      <b-icon-dash></b-icon-dash>
+                    </button>
+                  </span>
+                  <span class="input-container">
+                    <input
+                      type="text"
+                      v-model.number="pesan.quantity"
+                      class="form-control input-number"
+                      min="0"
+                      v-on:change="validateQty"
+                    />
+                  </span>
+                  <span class="input-group-btn">
+                    <button
+                      type="button"
+                      class="btn btn-default btn-number"
+                      v-on:click="pesan.quantity++"
+                    >
+                      <b-icon-plus></b-icon-plus>
+                    </button>
+                  </span>
+                </div>
               </div>
               <div class="form-group">
                 <label for="">Note</label>
@@ -52,7 +87,7 @@
                 ></textarea>
               </div>
               <button type="sumbit" class="btn btn-success" @click="checkout">
-                <b-icon-cart></b-icon-cart> Order
+                <b-icon-cart></b-icon-cart> Add to chart
               </button>
             </form>
           </div>
@@ -66,15 +101,17 @@
 <script>
 import axios from "axios";
 
-import Breadcumb from "../../components/Breadcumb.vue";
 export default {
+  props: {},
   validate({ params }) {
     return /^\d+$/.test(params.id);
   },
   data() {
     return {
       product: {},
-      pesan: {},
+      pesan: {
+        quantity: 0,
+      },
       title: "Product Detail",
       link: [
         {
@@ -93,15 +130,23 @@ export default {
     };
   },
   methods: {
+    validateQty() {
+      alert(this.pesan["quantity"]);
+    },
     setProdct(data) {
       this.link[2]["text"] = data.nama;
       this.product = data;
+    },
+    decrementQty() {
+      if (this.pesan.quantity > 0) {
+        this.pesan.quantity--;
+      }
     },
     checkout() {
       if (this.pesan.quantity) {
         this.pesan.products = this.product;
         axios
-          .post("http://localhost:8001/keranjangs", this.pesan)
+          .post("http://localhost:8001/charts", this.pesan)
           .then(() => {
             this.$toasted.success("Success add to cart", {
               theme: "toasted-primary",

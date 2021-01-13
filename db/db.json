@@ -3,191 +3,204 @@
     {
       "id": 1,
       "kode": "K-01",
-      "nama": "Sate Ayam",
-      "harga": 16000,
+      "nama": "Sayur Pocai",
+      "harga": 13500,
       "is_ready": true,
-      "gambar": "sate-ayam.jpg",
-      "best_seller": true
+      "gambar": "pocai.jpg",
+      "best_seller": true,
+      "unit": "250g"
     },
     {
       "id": 2,
       "kode": "K-02",
-      "nama": "Nasi Goreng Telur",
-      "harga": 14000,
+      "nama": "Australia Anggur Merah",
+      "harga": 25000,
       "is_ready": true,
-      "gambar": "nasi-goreng-telor.jpg",
-      "best_seller": false
+      "gambar": "anggur.jpg",
+      "best_seller": false,
+      "unit": "500g"
     },
     {
       "id": 3,
       "kode": "K-03",
-      "nama": "Nasi Rames",
-      "harga": 12000,
+      "nama": "Daun Labu Siam",
+      "harga": 5000,
       "is_ready": true,
-      "gambar": "nasi-rames.jpg",
-      "best_seller": true
+      "gambar": "daun-labu.jpg",
+      "best_seller": true,
+      "unit": "500g"
     },
     {
       "id": 4,
       "kode": "K-03",
-      "nama": "Nasi Rames",
+      "nama": "Buah Bengkoang",
       "harga": 12000,
       "is_ready": true,
-      "gambar": "nasi-rames.jpg",
-      "best_seller": false
+      "gambar": "bengkoang.jpg",
+      "best_seller": false,
+      "unit": "500g"
     }
   ],
   "products": [
     {
       "id": 1,
       "kode": "K-01",
-      "nama": "Sate Ayam",
-      "harga": 16000,
+      "nama": "Sayur Pocai",
+      "harga": 13500,
       "is_ready": true,
-      "gambar": "sate-ayam.jpg",
-      "best_seller": true
+      "gambar": "pocai.jpg",
+      "best_seller": true,
+      "unit": "250g"
     },
     {
       "id": 2,
       "kode": "K-02",
-      "nama": "Nasi Goreng Telur",
-      "harga": 14000,
+      "nama": "Australia Anggur Merah",
+      "harga": 25000,
       "is_ready": true,
-      "gambar": "nasi-goreng-telor.jpg",
-      "best_seller": false
+      "gambar": "anggur.jpg",
+      "best_seller": false,
+      "unit": "500g"
     },
     {
       "id": 3,
       "kode": "K-03",
-      "nama": "Nasi Rames",
-      "harga": 12000,
+      "nama": "Daun Labu Siam",
+      "harga": 5000,
       "is_ready": true,
-      "gambar": "nasi-rames.jpg",
-      "best_seller": false
+      "gambar": "daun-labu.jpg",
+      "best_seller": true,
+      "unit": "500g"
     },
     {
       "id": 4,
-      "kode": "K-04",
-      "nama": "Mie Ayam Bakso",
-      "harga": 14000,
+      "kode": "K-03",
+      "nama": "Buah Bengkoang",
+      "harga": 12000,
       "is_ready": true,
-      "gambar": "mie-ayam-bakso.jpg",
-      "best_seller": true
+      "gambar": "bengkoang.jpg",
+      "best_seller": false,
+      "unit": "500g"
     },
     {
       "id": 5,
       "kode": "K-05",
-      "nama": "Mie Goreng",
-      "harga": 13000,
+      "nama": "Buah Sirsak Segar",
+      "harga": 45000,
       "is_ready": true,
-      "gambar": "mie-goreng.jpg",
-      "best_seller": false
+      "gambar": "sirsak.jpg",
+      "best_seller": false,
+      "unit": "300g"
     },
     {
       "id": 6,
       "kode": "K-06",
-      "nama": "Bakso",
-      "harga": 10000,
+      "nama": "Pisang Lampung Segar",
+      "harga": 20000,
       "is_ready": true,
-      "gambar": "bakso.jpg",
-      "best_seller": true
+      "gambar": "pisang.jpg",
+      "best_seller": true,
+      "unit": "buah"
     },
     {
       "id": 7,
       "kode": "K-07",
-      "nama": "Pangsit 6 pcs",
-      "harga": 5000,
+      "nama": "Jeruk nipis",
+      "harga": 6000,
       "is_ready": true,
-      "gambar": "pangsit.jpg",
-      "best_seller": false
+      "gambar": "jeruk-nipis.jpg",
+      "best_seller": false,
+      "unit": "250g"
     },
     {
       "id": 8,
       "kode": "K-08",
-      "nama": "Kentang Goreng",
+      "nama": "Temulawak",
       "harga": 5000,
       "is_ready": true,
-      "gambar": "kentang-goreng.jpg",
-      "best_seller": true
+      "gambar": "temulawak.jpg",
+      "best_seller": true,
+      "unit": "250g"
     },
     {
       "id": 9,
       "kode": "K-09",
-      "nama": "Lontong Opor Ayam",
+      "nama": "Baby Buncis",
       "harga": 18000,
       "is_ready": true,
-      "gambar": "lontong-opor-ayam.jpg",
-      "best_seller": false
+      "gambar": "buncis.jpg",
+      "best_seller": false,
+      "unit": "KG"
+    },
+    {
+      "id": 10,
+      "kode": "K-10",
+      "nama": "Lemon import",
+      "harga": 25000,
+      "is_ready": true,
+      "gambar": "lemon.jpg",
+      "best_seller": false,
+      "unit": "500g"
+    },
+    {
+      "id": 11,
+      "kode": "K-11",
+      "nama": "Labu Kuning",
+      "harga": 35000,
+      "is_ready": true,
+      "gambar": "labu-kuning.jpg",
+      "best_seller": false,
+      "unit": "500g"
+    },
+    {
+      "id": 12,
+      "kode": "K-12",
+      "nama": "Wortel",
+      "harga": 5500,
+      "is_ready": true,
+      "gambar": "wortel.jpg",
+      "best_seller": false,
+      "unit": "250g"
     }
   ],
-  "keranjangs": [
+  "charts": [],
+  "orders": [
     {
-      "quantity": "2",
-      "note": "fsdfsdf",
-      "products": {
-        "id": 1,
-        "kode": "K-01",
-        "nama": "Sate Ayam",
-        "harga": 16000,
-        "is_ready": true,
-        "gambar": "sate-ayam.jpg",
-        "best_seller": true
-      },
-      "id": 1
-    }
-  ],
-  "pesanans": [
-    {
-      "nama": "Afif",
-      "noMeja": "3",
-      "keranjangs": [
+      "nama": "raditya",
+      "noMeja": "testset@tes.com",
+      "charts": [
         {
-          "jumlah_pemesanan": "1",
-          "keterangan": "Pedes",
+          "quantity": 1,
+          "note": "testset",
           "products": {
-            "id": 1,
-            "kode": "K-01",
-            "nama": "Sate Ayam",
-            "harga": 16000,
+            "id": 2,
+            "kode": "K-02",
+            "nama": "Australia Anggur Merah",
+            "harga": 25000,
             "is_ready": true,
-            "gambar": "sate-ayam.jpg"
+            "gambar": "anggur.jpg",
+            "best_seller": false,
+            "unit": "500g"
           },
           "id": 1
         },
         {
-          "jumlah_pemesanan": "1",
+          "quantity": 3,
+          "note": "etestest",
           "products": {
-            "id": 2,
-            "kode": "K-02",
-            "nama": "Nasi Goreng Telur",
-            "harga": 14000,
+            "id": 11,
+            "kode": "K-11",
+            "nama": "Labu Kuning",
+            "harga": 35000,
             "is_ready": true,
-            "gambar": "nasi-goreng-telor.jpg"
+            "gambar": "labu-kuning.jpg",
+            "best_seller": false,
+            "unit": "500g"
           },
           "id": 2
         }
       ],
       "id": 1
-    },
-    {
-      "nama": "wfdfsf",
-      "noMeja": "23",
-      "id": 2
-    },
-    {
-      "nama": "dfsdf",
-      "noMeja": "234",
-      "id": 3
-    },
-    {
-      "nama": "test",
-      "noMeja": "234",
-      "id": 4
-    },
-    {
-      "nama": "qweqwe",
-      "noMeja": "1",
-      "id": 5
     }
   ]
 }

@@ -13,7 +13,10 @@
       </b-jumbotron>
     </div>
 
-    <h4 class="font-weight-bold grey-text">Good Deals</h4>
+    <h4 class="font-weight-bold grey-text">
+      Good Deals
+      <NuxtLink to="/product" class="link float-right small">show all</NuxtLink>
+    </h4>
     <div class="row">
       <div
         class="col-md-3 col-6 mb-3"

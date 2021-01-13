@@ -76,5 +76,75 @@ body{
 .best-seller {
     display: flex;
     margin-left: auto;
-    margin-bottom: -14px;
+    margin-bottom: -16px;
+    z-index: 99;
   }
+  .delete-order{
+      color: #858585;
+  }
+  .delete-order:hover{
+      color: #ac3733;
+  }
+
+
+/* input number */
+.input-number{
+  
+    width: 55px !important;
+    text-align: center!important;
+    font-weight: bold!important;
+    font-size: 25px!important;
+    height: 40px!important;
+    border:none!important;
+    border-bottom: solid 2px #ccc!important;
+    box-shadow: none!important;
+    position:relative;
+}
+.input-container{
+    position: relative;
+    height: 40px;
+    display: block; 
+    margin: 0 15px;
+}
+.input-container:before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 2px;
+    height: 10px;
+    background-color: #ccc!important;
+    z-index:10;
+}
+.input-container:after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 2px;
+    height: 10px;
+    background-color: #ccc!important;
+    z-index:10;
+}
+.btn-number{
+    border-radius: 50%!important;
+    border-color: #ccc!important;
+    color: #ccc!important;
+    outline: none!important;
+    font-size: 20px!important;
+    padding: 3px!important;
+    width: 35px;
+    height: 35px;
+    
+}
+.product-img{
+        width: 100%;
+        height: 15vw;
+        object-fit: cover;
+}
+.link{
+    color: #717171;
+}
+.link:hover{
+    color: #265B0B;
+}

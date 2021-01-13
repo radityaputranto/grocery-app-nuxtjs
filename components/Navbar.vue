@@ -47,7 +47,7 @@ export default {
   },
   mounted() {
     axios
-      .get("http://localhost:8001/keranjangs")
+      .get("http://localhost:8001/charts")
       .then((response) => {
         console.log(response.data.length);
         this.setJumlah(response.data);
