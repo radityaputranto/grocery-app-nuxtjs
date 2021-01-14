@@ -13,8 +13,6 @@ body{
 }
 .search-table{
     max-width: 200px;
-    display: flex;
-  justify-content: center;
 }
 .cart-badge{
     position: relative;
@@ -146,5 +144,46 @@ body{
     color: #717171;
 }
 .link:hover{
+    color: #265B0B;
+}
+.card-header{
+    background-color: transparent;
+}
+
+.badge-success-table{
+    background-color: #E8FFF1;
+    color: #50C264;
+}
+.badge-danger-table{
+    background-color: #FDF1F0;
+    color: #EC3E33;
+}
+.item-right{
+    display: flex;
+    margin-left: auto;
+}
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #43A745;
+    border-color: #43A745;
+}
+
+.page-link {
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #43A745;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+}
+
+.nav-link{
+    color: #43A745;
+}
+.nav-link:hover{
     color: #265B0B;
 }

@@ -53,11 +53,11 @@
                 <input type="text" class="form-control" v-model="pesan.nama" />
               </div>
               <div class="form-group">
-                <label for="noMeja">Email :</label>
+                <label for="email">Email :</label>
                 <input
                   type="email"
                   class="form-control"
-                  v-model="pesan.noMeja"
+                  v-model="pesan.email"
                 />
                 <small class="text-muted"
                   >Invoice and book order will be sent to your email
@@ -131,7 +131,7 @@ export default {
         });
     },
     checkout() {
-      if (this.pesan.nama && this.pesan.noMeja) {
+      if (this.pesan.nama && this.pesan.email) {
         this.pesan.charts = this.charts;
         axios
           .post("http://localhost:8001/orders", this.pesan)

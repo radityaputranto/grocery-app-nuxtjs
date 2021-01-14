@@ -57,7 +57,7 @@
       "kode": "K-02",
       "nama": "Australia Anggur Merah",
       "harga": 25000,
-      "is_ready": true,
+      "is_ready": false,
       "gambar": "anggur.jpg",
       "best_seller": false,
       "unit": "500g"
@@ -77,7 +77,7 @@
       "kode": "K-03",
       "nama": "Buah Bengkoang",
       "harga": 12000,
-      "is_ready": true,
+      "is_ready": false,
       "gambar": "bengkoang.jpg",
       "best_seller": false,
       "unit": "500g"
@@ -167,7 +167,7 @@
   "orders": [
     {
       "nama": "raditya",
-      "noMeja": "testset@tes.com",
+      "email": "testset@tes.com",
       "charts": [
         {
           "quantity": 1,
@@ -201,6 +201,28 @@
         }
       ],
       "id": 1
+    },
+    {
+      "nama": "test",
+      "email": "test@tes.com",
+      "charts": [
+        {
+          "quantity": 1,
+          "note": "dgdfgdfg",
+          "products": {
+            "id": 3,
+            "kode": "K-03",
+            "nama": "Daun Labu Siam",
+            "harga": 5000,
+            "is_ready": true,
+            "gambar": "daun-labu.jpg",
+            "best_seller": true,
+            "unit": "500g"
+          },
+          "id": 1
+        }
+      ],
+      "id": 2
     }
   ]
 }
