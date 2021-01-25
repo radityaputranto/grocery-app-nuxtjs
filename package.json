@@ -1,5 +1,5 @@
 {
-  "name": "perpustakaan-nuxt-js",
+  "name": "grocery-nuxt-js",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -14,7 +14,8 @@
     "bootstrap": "^4.5.2",
     "bootstrap-vue": "^2.17.3",
     "core-js": "^3.6.5",
-    "nuxt": "^2.14.6"
+    "nuxt": "^2.14.6",
+    "vuex": "^3.6.0"
   },
   "devDependencies": {}
 }
