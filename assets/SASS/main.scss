@@ -1,3 +1,16 @@
+$dark-green : #265B0B;
+$primary-green : #43A745;
+$grey-text : #717171;
+
+$alert:('danger-color' : #EC3E33,
+  'danger-bg' : #FDF1F0,
+  'success-color' : #50C264,
+  'success-bg' : #E8FFF1,
+
+);
+
+
+
 body {
   background-color: #F1F1F1;
 }
@@ -25,11 +38,11 @@ body {
 }
 
 .dark-green-text {
-  color: #265B0B !important;
+  color: $dark-green !important;
 }
 
 .grey-text {
-  color: #717171;
+  color: $grey-text;
 }
 
 .borderless {
@@ -63,16 +76,16 @@ body {
   box-shadow: 10px -1px 23px -2px rgba(0, 0, 0, 0.12);
   -webkit-box-shadow: 10px -1px 23px -2px rgba(0, 0, 0, 0.12);
   -moz-box-shadow: 10px -1px 23px -2px rgba(0, 0, 0, 0.12);
-}
 
-.input-search input {
-  height: 70px;
-  border: 0px;
-}
+  input {
+    height: 70px;
+    border: 0px;
+  }
 
-.input-search .input-group-text {
-  background: white;
-  border: 0px;
+  .input-group-text {
+    background: white;
+    border: 0px;
+  }
 }
 
 .card {
@@ -81,10 +94,10 @@ body {
 
 .breadcrumb {
   background-color: transparent !important;
-}
 
-.breadcrumb .breadcrumb-item a {
-  color: #265B0B;
+  & &-item a {
+    color: $dark-green;
+  }
 }
 
 .best-seller {
@@ -96,13 +109,15 @@ body {
 
 .delete-order {
   color: #858585;
+
+  &:hover {
+    color: #ac3733;
+  }
 }
 
-.delete-order:hover {
-  color: #ac3733;
-}
 
 .input-number {
+
   width: 55px !important;
   text-align: center !important;
   font-weight: bold !important;
@@ -119,28 +134,28 @@ body {
   height: 40px;
   display: block;
   margin: 0 15px;
-}
 
-.input-container:before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 2px;
-  height: 10px;
-  background-color: #ccc !important;
-  z-index: 10;
-}
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 2px;
+    height: 10px;
+    background-color: #ccc !important;
+    z-index: 10;
+  }
 
-.input-container:after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 2px;
-  height: 10px;
-  background-color: #ccc !important;
-  z-index: 10;
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 2px;
+    height: 10px;
+    background-color: #ccc !important;
+    z-index: 10;
+  }
 }
 
 .btn-number {
@@ -152,6 +167,7 @@ body {
   padding: 3px !important;
   width: 35px;
   height: 35px;
+
 }
 
 .product-img {
@@ -161,11 +177,11 @@ body {
 }
 
 .link {
-  color: #717171;
-}
+  color: $grey-text;
 
-.link:hover {
-  color: #265B0B;
+  &:hover {
+    color: $dark-green;
+  }
 }
 
 .card-header {
@@ -173,13 +189,13 @@ body {
 }
 
 .badge-success-table {
-  background-color: #E8FFF1;
-  color: #50C264;
+  background-color: map-get($alert, 'success-bg');
+  color: map-get($alert, 'success-color');
 }
 
 .badge-danger-table {
-  background-color: #FDF1F0;
-  color: #EC3E33;
+  background-color: map-get($alert, 'danger-bg');
+  color: map-get($alert, 'danger-color');
 }
 
 .item-right {
@@ -187,11 +203,12 @@ body {
   margin-left: auto;
 }
 
+
 .page-item.active .page-link {
   z-index: 3;
   color: #fff;
-  background-color: #43A745;
-  border-color: #43A745;
+  background-color: $primary-green;
+  border-color: $primary-green;
 }
 
 .page-link {
@@ -200,16 +217,15 @@ body {
   padding: 0.5rem 0.75rem;
   margin-left: -1px;
   line-height: 1.25;
-  color: #43A745;
+  color: $primary-green;
   background-color: #fff;
   border: 1px solid #dee2e6;
 }
 
 .nav-link {
-  color: #43A745;
+  color: $primary-green;
 }
 
 .nav-link:hover {
-  color: #265B0B;
+  color: $dark-green;
 }
-/*# sourceMappingURL=main.css.map */

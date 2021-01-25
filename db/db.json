@@ -223,6 +223,43 @@
         }
       ],
       "id": 2
+    },
+    {
+      "nama": "tes",
+      "email": "tes@tes.com",
+      "charts": [
+        {
+          "quantity": 1,
+          "note": "tes",
+          "products": {
+            "id": 2,
+            "kode": "K-02",
+            "nama": "Australia Anggur Merah",
+            "harga": 25000,
+            "is_ready": false,
+            "gambar": "anggur.jpg",
+            "best_seller": false,
+            "unit": "500g"
+          },
+          "id": 1
+        },
+        {
+          "quantity": 1,
+          "note": "dsfsdf",
+          "products": {
+            "id": 2,
+            "kode": "K-02",
+            "nama": "Australia Anggur Merah",
+            "harga": 25000,
+            "is_ready": false,
+            "gambar": "anggur.jpg",
+            "best_seller": false,
+            "unit": "500g"
+          },
+          "id": 2
+        }
+      ],
+      "id": 3
     }
   ]
 }
