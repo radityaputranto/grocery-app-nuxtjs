@@ -20,7 +20,7 @@
     <div class="row">
       <div
         class="col-md-3 col-6 mb-3"
-        v-for="product in products"
+        v-for="product in best_product"
         :key="product.id"
       >
         <Cardproducts :product="product" />
@@ -33,26 +33,36 @@
 </template>
 
 <script>
-import axios from "axios";
+//import axios from "axios";
+import { mapGetters, mapActions } from "vuex";
 export default {
   data() {
     return {
       products: [],
     };
   },
+  computed: {
+    ...mapGetters({
+      best_product: "product/getBestProduct",
+    }),
+  },
   methods: {
-    setProdct(data) {
+    /* setProdct(data) {
       this.products = data;
-    },
+    }, */
+    ...mapActions({
+      get_product: "product/getBestProduct",
+    }),
   },
   mounted() {
-    axios
+    /* axios
       .get("http://localhost:8001/best-products")
       .then((response) => this.setProdct(response.data))
       .catch((error) => {
         // handle error
         console.log(error);
-      });
+      }); */
+    this.get_product();
   },
 };
 </script>

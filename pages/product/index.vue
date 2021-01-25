@@ -42,35 +42,46 @@
 
 <script>
 import axios from "axios";
+import { mapGetters, mapActions } from "vuex";
 export default {
   data() {
     return {
-      products: [],
+      //products: [],
       search: "",
     };
+  },
+  computed: {
+    ...mapGetters({
+      products: "product/getProducts",
+    }),
   },
   methods: {
     setProdct(data) {
       this.products = data;
     },
     searchFood() {
-      axios
+      /* axios
         .get("http://localhost:8001/products?q=" + this.search)
         .then((response) => this.setProdct(response.data))
         .catch(function (error) {
-          // handle error
           console.log(error);
-        });
+        }); */
+      this.searchProducts(this.search);
     },
+    ...mapActions({
+      get_product: "product/getProducts",
+      searchProducts: "product/searchProducts",
+    }),
   },
   mounted() {
-    axios
+    /* axios
       .get("http://localhost:8001/products")
       .then((response) => this.setProdct(response.data))
       .catch(function (error) {
         // handle error
         console.log(error);
-      });
+      }); */
+    this.get_product();
   },
 };
 </script>
