@@ -112,6 +112,7 @@ export default {
       pesan: {
         quantity: 0,
       },
+      items: [],
       title: "Product Detail",
       link: [
         {
@@ -145,7 +146,7 @@ export default {
     checkout() {
       if (this.pesan.quantity) {
         this.pesan.products = this.product;
-        axios
+        /* axios
           .post("http://localhost:8001/charts", this.pesan)
           .then(() => {
             this.$toasted.success("Success add to cart", {
@@ -155,7 +156,13 @@ export default {
             });
             this.$router.push({ path: "/cart" });
           })
-          .catch((err) => console.log(err));
+          .catch((err) => console.log(err)); */
+
+        //localstorage
+        this.items.push(this.pesan);
+        this.pesan = "";
+        this.saveCart();
+        this.$router.push({ path: "/cart" });
       } else {
         this.$toasted.error("quantity is required", {
           theme: "toasted-primary",
@@ -163,6 +170,10 @@ export default {
           duration: 3000,
         });
       }
+    },
+    saveCart() {
+      const parsed = JSON.stringify(this.items);
+      localStorage.setItem("cart", parsed);
     },
   },
   mounted() {
@@ -173,6 +184,14 @@ export default {
         // handle error
         console.log(error);
       });
+
+    if (localStorage.getItem("cart")) {
+      try {
+        this.items = JSON.parse(localStorage.getItem("cart"));
+      } catch (e) {
+        localStorage.removeItem("cart");
+      }
+    }
   },
 };
 </script>
