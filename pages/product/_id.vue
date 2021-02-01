@@ -62,7 +62,6 @@
                       v-model.number="pesan.quantity"
                       class="form-control input-number"
                       min="0"
-                      v-on:change="validateQty"
                     />
                   </span>
                   <span class="input-group-btn">
@@ -99,7 +98,7 @@
 
 
 <script>
-import axios from "axios";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   props: {},
@@ -108,11 +107,9 @@ export default {
   },
   data() {
     return {
-      product: {},
       pesan: {
         quantity: 0,
       },
-      items: [],
       title: "Product Detail",
       link: [
         {
@@ -131,12 +128,8 @@ export default {
     };
   },
   methods: {
-    validateQty() {
-      alert(this.pesan["quantity"]);
-    },
-    setProdct(data) {
-      this.link[2]["text"] = data.nama;
-      this.product = data;
+    setProductName(data) {
+      this.link[2]["text"] = this.product.nama;
     },
     decrementQty() {
       if (this.pesan.quantity > 0) {
@@ -146,22 +139,8 @@ export default {
     checkout() {
       if (this.pesan.quantity) {
         this.pesan.products = this.product;
-        /* axios
-          .post("http://localhost:8001/charts", this.pesan)
-          .then(() => {
-            this.$toasted.success("Success add to cart", {
-              theme: "toasted-primary",
-              position: "top-right",
-              duration: 3000,
-            });
-            this.$router.push({ path: "/cart" });
-          })
-          .catch((err) => console.log(err)); */
-
-        //localstorage
-        this.items.push(this.pesan);
+        this.add_cart(this.pesan);
         this.pesan = "";
-        this.saveCart();
         this.$router.push({ path: "/cart" });
       } else {
         this.$toasted.error("quantity is required", {
@@ -171,27 +150,18 @@ export default {
         });
       }
     },
-    saveCart() {
-      const parsed = JSON.stringify(this.items);
-      localStorage.setItem("cart", parsed);
-    },
+    ...mapActions({
+      get_detail_product: "product/getDetailProduct",
+      add_cart: "cart/addCart",
+    }),
   },
   mounted() {
-    axios
-      .get("http://localhost:8001/products/" + this.$route.params.id)
-      .then((response) => this.setProdct(response.data))
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      });
-
-    if (localStorage.getItem("cart")) {
-      try {
-        this.items = JSON.parse(localStorage.getItem("cart"));
-      } catch (e) {
-        localStorage.removeItem("cart");
-      }
-    }
+    this.get_detail_product(this.$route.params.id);
+  },
+  computed: {
+    ...mapGetters({
+      product: "product/getDetailProduct",
+    }),
   },
 };
 </script>

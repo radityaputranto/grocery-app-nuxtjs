@@ -33,29 +33,29 @@
 </template>
 
 <script>
-import axios from "axios";
+import { mapGetters, mapActions } from "vuex";
+
 export default {
   data() {
     return {
-      orders: [],
+      //orders: [],
     };
   },
   methods: {
     setJumlah(data) {
       this.orders = data;
     },
+    ...mapActions({
+      get_cart: "cart/getCart",
+    }),
   },
   mounted() {
-    axios
-      .get("http://localhost:8001/charts")
-      .then((response) => {
-        console.log(response.data.length);
-        this.setJumlah(response.data);
-      })
-      .catch((error) => {
-        // handle error
-        console.log(error);
-      });
+    this.get_cart();
+  },
+  computed: {
+    ...mapGetters({
+      orders: "cart/getCart",
+    }),
   },
 };
 </script>

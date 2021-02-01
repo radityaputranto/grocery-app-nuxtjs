@@ -4,6 +4,7 @@ import axios from "axios";
 export const state = {
   best_product: [],
   products: [],
+  detailProduct: [],
   search: ""
 };
 export const getters = {
@@ -12,12 +13,11 @@ export const getters = {
   },
   getProducts: state => {
     return state.products;
+  },
+  getDetailProduct: state => {
+    console.log(state.detailProduct);
+    return state.detailProduct;
   }
-  /* searchProducts: state => id => {
-    console.log(id);
-    return "";
-    //return state.things.find(thing => thing.id === id)
-  } */
 };
 export const actions = {
   getProducts({ commit }) {
@@ -49,6 +49,17 @@ export const actions = {
       .catch(function(error) {
         console.log(error);
       });
+  },
+  getDetailProduct: ({ commit }, data) => {
+    console.log("masuk");
+    axios
+      .get("http://localhost:8001/products/" + data)
+      .then(response => {
+        commit("setDetailProduct", response.data);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   }
 };
 export const mutations = {
@@ -57,5 +68,8 @@ export const mutations = {
   },
   setProducts(state, data) {
     state.products = data;
+  },
+  setDetailProduct(state, data) {
+    state.detailProduct = data;
   }
 };

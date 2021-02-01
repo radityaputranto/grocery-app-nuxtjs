@@ -41,12 +41,10 @@
 </template> 
 
 <script>
-import axios from "axios";
 import { mapGetters, mapActions } from "vuex";
 export default {
   data() {
     return {
-      //products: [],
       search: "",
     };
   },
@@ -56,16 +54,7 @@ export default {
     }),
   },
   methods: {
-    setProdct(data) {
-      this.products = data;
-    },
     searchFood() {
-      /* axios
-        .get("http://localhost:8001/products?q=" + this.search)
-        .then((response) => this.setProdct(response.data))
-        .catch(function (error) {
-          console.log(error);
-        }); */
       this.searchProducts(this.search);
     },
     ...mapActions({
@@ -74,13 +63,6 @@ export default {
     }),
   },
   mounted() {
-    /* axios
-      .get("http://localhost:8001/products")
-      .then((response) => this.setProdct(response.data))
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      }); */
     this.get_product();
   },
 };
