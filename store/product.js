@@ -1,6 +1,3 @@
-import Vuex from "vuex";
-import axios from "axios";
-
 export const state = {
   best_product: [],
   products: [],
@@ -21,8 +18,8 @@ export const getters = {
 };
 export const actions = {
   getProducts({ commit }) {
-    axios
-      .get("http://localhost:8001/products")
+    this.$axios
+      .get("products")
       .then(response => {
         commit("setProducts", response.data);
       })
@@ -31,8 +28,8 @@ export const actions = {
       });
   },
   getBestProduct({ commit }) {
-    axios
-      .get("http://localhost:8001/best-products")
+    this.$axios
+      .get("best-products")
       .then(response => {
         commit("setBestProduct", response.data);
       })
@@ -40,9 +37,9 @@ export const actions = {
         console.log(error);
       });
   },
-  searchProducts: ({ commit }, data) => {
-    axios
-      .get("http://localhost:8001/products?q=" + data)
+  searchProducts: function({ commit }, data) {
+    this.$axios
+      .get("products?q=" + data)
       .then(response => {
         commit("setProducts", response.data);
       })
@@ -50,10 +47,9 @@ export const actions = {
         console.log(error);
       });
   },
-  getDetailProduct: ({ commit }, data) => {
-    console.log("masuk");
-    axios
-      .get("http://localhost:8001/products/" + data)
+  getDetailProduct: function({ commit }, data) {
+    this.$axios
+      .get("products/" + data)
       .then(response => {
         commit("setDetailProduct", response.data);
       })

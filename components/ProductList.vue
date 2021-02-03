@@ -120,7 +120,6 @@
 </template>
 
 <script>
-import axios from "axios";
 export default {
   data() {
     return {
@@ -205,8 +204,8 @@ export default {
     },
   },
   mounted() {
-    axios
-      .get("http://localhost:8001/products")
+    this.$axios
+      .get("products")
       .then((response) => {
         this.setProdct(response.data);
         console.log(response.data);

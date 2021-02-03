@@ -28,6 +28,16 @@ export const actions = {
     state.cart.splice(id, 1);
     const parsed = JSON.stringify(state.cart);
     localStorage.setItem("cart", parsed);
+  },
+  checkoutCart: function({ commit }, payload, carts) {
+    console.log(payload);
+    this.$axios
+      .post("orders", payload)
+      .then(() => {
+        // Hapus Semua Keranjang
+        localStorage.removeItem("cart");
+      })
+      .catch(err => console.log(err));
   }
   /*   saveCart(data) {
     const parsed = JSON.stringify(data);

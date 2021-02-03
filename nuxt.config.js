@@ -37,6 +37,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/bootstrap
     "bootstrap-vue/nuxt",
+    "@nuxtjs/axios",
     "@nuxtjs/toast"
   ],
   bootstrapVue: {
@@ -70,6 +71,9 @@ export default {
       }
     }
   },
+  axios: {
+    baseURL: "http://localhost:8001/"
+  },
   router: {
     linkExactActiveClass: "dark-green-text" // tailwind class with custom color
   },
@@ -85,6 +89,17 @@ export default {
         }
       }
     ]
+  },
+  publicRuntimeConfig: {
+    axios: {
+      browserBaseURL: process.env.BROWSER_BASE_URL
+    }
+  },
+
+  privateRuntimeConfig: {
+    axios: {
+      baseURL: process.env.BASE_URL
+    }
   }
 };
 

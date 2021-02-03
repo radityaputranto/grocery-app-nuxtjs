@@ -182,8 +182,8 @@ export default {
     },
   },
   mounted() {
-    axios
-      .get("http://localhost:8001/orders")
+    this.$axios
+      .get("orders")
       .then((response) => {
         this.setItem(response.data);
         console.log(response.data);

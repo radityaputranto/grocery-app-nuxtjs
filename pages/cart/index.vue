@@ -89,7 +89,7 @@
   </div>
 </template>
 <script>
-import axios from "axios";
+import { mapActions } from "vuex";
 export default {
   data() {
     return {
@@ -134,23 +134,9 @@ export default {
     checkout() {
       if (this.pesan.nama && this.pesan.email) {
         this.pesan.carts = this.carts;
-        axios
-          .post("http://localhost:8001/orders", this.pesan)
-          .then(() => {
-            // Hapus Semua Keranjang
-            this.carts.map(function (item) {
-              return axios
-                .delete("http://localhost:8001/carts/" + item.id)
-                .catch((error) => console.log(error));
-            });
-            this.$router.push({ path: "/success" });
-            this.$toasted.success("Order Successfully", {
-              theme: "toasted-primary",
-              position: "top-right",
-              duration: 3000,
-            });
-          })
-          .catch((err) => console.log(err));
+        this.checkoutCart(this.pesan);
+
+        this.$router.push({ path: "/success" });
       } else {
         this.$toasted.error("Name and table number are required", {
           theme: "toasted-primary",
@@ -159,6 +145,9 @@ export default {
         });
       }
     },
+    ...mapActions({
+      checkoutCart: "cart/checkoutCart",
+    }),
   },
   mounted() {
     this.getData();
