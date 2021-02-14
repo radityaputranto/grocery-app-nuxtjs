@@ -1,6 +1,6 @@
 <template>
   <b-container fluid>
-    <h4>Product List</h4>
+    <h4>Order List</h4>
     <!-- User Interface controls -->
     <b-row class="mb-3">
       <b-col lg="2" md="4" class="my-1">
@@ -40,6 +40,10 @@
               col="4"
               placeholder="Type to Search"
             ></b-form-input>
+
+            <!-- <b-input-group-append>
+                        <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
+                        </b-input-group-append> -->
           </b-input-group>
         </b-form-group>
       </b-col>
@@ -47,7 +51,7 @@
 
     <!-- Main table element -->
     <b-table
-      :items="items"
+      :items="products"
       :fields="fields"
       :current-page="currentPage"
       :per-page="perPage"
@@ -61,12 +65,11 @@
       small
       @filtered="onFiltered"
     >
-      <template #cell(charts)="row">
-        {{ row.item.charts.length }}
-      </template>
-      <template #cell(products)="row">
-        <span class="small text-muted">IDR</span>
-        {{ totalPrice(row.item.charts) }}
+      <template #cell(is_ready)="row">
+        <b-badge pill variant="success-table" v-if="row.item.is_ready"
+          >Ready</b-badge
+        >
+        <b-badge pill variant="danger-table" v-else>Out Stock</b-badge>
       </template>
 
       <template #cell(actions)="row">
@@ -121,8 +124,7 @@ import axios from "axios";
 export default {
   data() {
     return {
-      items: [],
-
+      products: [],
       fields: [
         {
           key: "id",
@@ -131,29 +133,49 @@ export default {
           sortDirection: "desc",
         },
         {
+          key: "kode",
+          label: "Code",
+          sortable: true,
+          class: "text-center",
+        },
+        {
           key: "nama",
-          label: "User Name",
+          label: "Name",
           sortable: true,
           class: "text-center",
         },
         {
-          key: "charts",
-          label: "Total Charts",
+          key: "harga",
+          label: "Price",
           sortable: true,
           class: "text-center",
         },
         {
-          key: "products",
-          label: "Total Products",
+          key: "unit",
+          label: "Unit",
           sortable: true,
           class: "text-center",
         },
-        /* {
-          key: "charts",
-          label: "Total Order",
+        {
+          key: "is_ready",
+          label: "Status",
           sortable: true,
           class: "text-center",
-        }, */
+          formatter: (value, key, item) => {
+            return value ? true : false;
+          },
+        },
+        {
+          key: "best_seller",
+          label: "Best Seller",
+          formatter: (value, key, item) => {
+            return value ? "Yes" : "No";
+          },
+          sortable: true,
+          sortByFormatted: true,
+          filterByFormatted: true,
+        },
+        /* { key: "actions", label: "Actions" }, */
       ],
       totalRows: 1,
       currentPage: 1,
@@ -182,17 +204,17 @@ export default {
     },
   },
   mounted() {
-    this.$axios
-      .get("orders")
+    axios
+      .get("http://localhost:8001/orders")
       .then((response) => {
-        this.setItem(response.data);
+        this.setProdct(response.data);
         console.log(response.data);
       })
       .catch(function (error) {
         // handle error
         console.log(error);
       });
-    this.totalRows = this.items.length;
+    this.totalRows = this.products.length;
   },
   methods: {
     info(item, index, button) {
@@ -209,14 +231,9 @@ export default {
       this.totalRows = filteredItems.length;
       this.currentPage = 1;
     },
-    setItem(data) {
-      this.items = data;
-    },
-    totalPrice(charts) {
-      return charts.reduce(function (item, data) {
-        return item + data.products.harga * data.quantity;
-      }, 0);
+    setProdct(data) {
+      this.products = data;
     },
   },
 };
-</script>
+</script> 

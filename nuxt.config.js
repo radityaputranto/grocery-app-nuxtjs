@@ -31,7 +31,12 @@ export default {
   components: true,
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
-  buildModules: [],
+  buildModules: ["@nuxtjs/router"],
+
+  /* nuxtjs router */
+  routerModule: {
+    /* module options */
+  },
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [

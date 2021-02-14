@@ -120,11 +120,11 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
       products: [],
-
       fields: [
         {
           key: "id",
@@ -204,8 +204,8 @@ export default {
     },
   },
   mounted() {
-    this.$axios
-      .get("products")
+    axios
+      .get("http://localhost:8001/products")
       .then((response) => {
         this.setProdct(response.data);
         console.log(response.data);
@@ -236,4 +236,4 @@ export default {
     },
   },
 };
-</script>
+</script> 
