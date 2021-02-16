@@ -65,13 +65,6 @@
       small
       @filtered="onFiltered"
     >
-      <template #cell(is_ready)="row">
-        <b-badge pill variant="success-table" v-if="row.item.is_ready"
-          >Ready</b-badge
-        >
-        <b-badge pill variant="danger-table" v-else>Out Stock</b-badge>
-      </template>
-
       <template #cell(actions)="row">
         <b-button
           size="sm"
@@ -85,16 +78,15 @@
         </b-button>
       </template>
 
-      <template #row-details="row">
-        <b-card>
-          <ul>
-            <li v-for="(value, key) in row.item" :key="key">
-              {{ key }}: {{ value }}
-            </li>
-          </ul>
-        </b-card>
+      <template #cell(cart-item)="data">
+        <ul v-for="(row, key) in data" :key="key">
+          <li v-for="(value, key) in row.carts" :key="key">
+            {{ value.products.nama }}
+          </li>
+        </ul>
       </template>
     </b-table>
+
     <b-row class="justify-content-end">
       <b-col sm="6" md="3" class="my-1">
         <b-pagination
@@ -107,15 +99,6 @@
         ></b-pagination>
       </b-col>
     </b-row>
-    <!-- Info modal -->
-    <b-modal
-      :id="infoModal.id"
-      :title="infoModal.title"
-      ok-only
-      @hide="resetInfoModal"
-    >
-      <pre>{{ infoModal.content }}</pre>
-    </b-modal>
   </b-container>
 </template>
 
@@ -127,53 +110,27 @@ export default {
       products: [],
       fields: [
         {
-          key: "id",
-          label: "id",
-          sortable: true,
-          sortDirection: "desc",
-        },
-        {
-          key: "kode",
-          label: "Code",
-          sortable: true,
-          class: "text-center",
-        },
-        {
           key: "nama",
           label: "Name",
           sortable: true,
-          class: "text-center",
+          sortDirection: "asc",
         },
         {
-          key: "harga",
-          label: "Price",
+          key: "email",
+          label: "Email",
           sortable: true,
           class: "text-center",
         },
         {
-          key: "unit",
-          label: "Unit",
+          key: "email",
+          label: "Email",
           sortable: true,
           class: "text-center",
         },
         {
-          key: "is_ready",
-          label: "Status",
-          sortable: true,
-          class: "text-center",
-          formatter: (value, key, item) => {
-            return value ? true : false;
-          },
-        },
-        {
-          key: "best_seller",
-          label: "Best Seller",
-          formatter: (value, key, item) => {
-            return value ? "Yes" : "No";
-          },
-          sortable: true,
-          sortByFormatted: true,
-          filterByFormatted: true,
+          key: "cart-item",
+          label: "Carts",
+          class: "text-left",
         },
         /* { key: "actions", label: "Actions" }, */
       ],
@@ -208,7 +165,6 @@ export default {
       .get("http://localhost:8001/orders")
       .then((response) => {
         this.setProdct(response.data);
-        console.log(response.data);
       })
       .catch(function (error) {
         // handle error
@@ -237,3 +193,9 @@ export default {
   },
 };
 </script> 
+
+<style>
+ul {
+  padding-left: 20px;
+}
+</style>
