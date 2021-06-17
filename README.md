@@ -15,6 +15,10 @@ $ npm run start
 
 # generate static project
 $ npm run generate
+
+# run json placholder fake API
+$ json-server --watch db.json --port 8001
+
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
